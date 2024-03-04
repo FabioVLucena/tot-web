@@ -24,7 +24,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/signin")
-	public ResponseEntity<SigninResponse> login(@RequestBody SigninRequest req) throws Exception {
+	public ResponseEntity<SigninResponse> signin(@RequestBody SigninRequest req) throws Exception {
 		
 		SigninResponse res = authBO.signin(req);
 		
@@ -32,7 +32,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<SignupResponse> register(@RequestBody SignupRequest req) throws Exception {
+	public ResponseEntity<SignupResponse> signup(@RequestBody SignupRequest req) throws Exception {
 
 		SignupResponse res = authBO.signup(req);
 		
