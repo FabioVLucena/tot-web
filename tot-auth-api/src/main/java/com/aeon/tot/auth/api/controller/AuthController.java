@@ -13,6 +13,8 @@ import com.aeon.tot.auth.api.dto.SigninResponse;
 import com.aeon.tot.auth.api.dto.SignupRequest;
 import com.aeon.tot.auth.api.dto.SignupResponse;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
@@ -24,7 +26,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/signin")
-	public ResponseEntity<SigninResponse> signin(@RequestBody SigninRequest req) throws Exception {
+	public ResponseEntity<SigninResponse> signin(@RequestBody @Valid SigninRequest req) throws Exception {
 		
 		SigninResponse res = authBO.signin(req);
 		
@@ -32,7 +34,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<SignupResponse> signup(@RequestBody SignupRequest req) throws Exception {
+	public ResponseEntity<SignupResponse> signup(@RequestBody @Valid SignupRequest req) throws Exception {
 
 		SignupResponse res = authBO.signup(req);
 		
