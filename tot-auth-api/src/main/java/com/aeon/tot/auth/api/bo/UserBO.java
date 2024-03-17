@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Component;
 
 import com.aeon.tot.auth.api.entity.User;
+import com.aeon.tot.auth.api.exception.WarningException;
 import com.aeon.tot.auth.api.repository.UserRepository;
 import com.aeon.tot.auth.api.service.UserService;
 
@@ -34,6 +35,6 @@ public class UserBO {
 		User user = this.userService.getUserByUsername(username);
 		
 		if (user != null)
-			throw new Exception("username in use!");
+			throw new WarningException("Username in use!");
 	}
 }

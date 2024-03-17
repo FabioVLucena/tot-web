@@ -8,6 +8,7 @@ import com.aeon.tot.auth.api.dto.SigninResponse;
 import com.aeon.tot.auth.api.dto.SignupRequest;
 import com.aeon.tot.auth.api.dto.SignupResponse;
 import com.aeon.tot.auth.api.entity.User;
+import com.aeon.tot.auth.api.exception.WarningException;
 import com.aeon.tot.auth.api.service.JwtService;
 import com.aeon.tot.auth.api.service.UserService;
 
@@ -28,19 +29,19 @@ public class AuthBO {
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-	public SigninResponse signin(SigninRequest req) throws Exception {
+	public SigninResponse signin(SigninRequest req) throws WarningException {
 		String username = req.username();
 		String password = req.password();
 		
 		User user = this.userService.getUserByUsername(username);
 		
 		if (user == null) 
-			throw new Exception("Username or login invalid!");
+			throw new WarningException("Username or login invalid!");
 		
 		Boolean isMatch = this.passwordEncoder.matches(password, user.getPassword()); 
 		
 		if (isMatch == false) 
-			throw new Exception("Username or login invalid!");
+			throw new WarningException("Username or login invalid!");
 		
 		String jwt = this.jwtService.generateToken(user);
 		
@@ -55,7 +56,7 @@ public class AuthBO {
 		Boolean isMatch = password.equals(repassword); 
 		
 		if (isMatch == false) 
-			throw new Exception("Passwords not matching!");
+			throw new WarningException("Passwords not matching!");
 		
 		String hashPassword = this.passwordEncoder.encode(password);
 		
