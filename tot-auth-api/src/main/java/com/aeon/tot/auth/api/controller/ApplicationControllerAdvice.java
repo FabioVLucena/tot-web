@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -30,6 +31,14 @@ public class ApplicationControllerAdvice {
 	@ExceptionHandler(WarningException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorResponse treatmentWarningException(WarningException ex) {
+		String errorStr = ex.getMessage();
+		
+		return ErrorResponse.convert(errorStr);
+	}
+
+	@ExceptionHandler(UsernameNotFoundException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorResponse treatmentUsernameNotFoundException(UsernameNotFoundException ex) {
 		String errorStr = ex.getMessage();
 		
 		return ErrorResponse.convert(errorStr);
