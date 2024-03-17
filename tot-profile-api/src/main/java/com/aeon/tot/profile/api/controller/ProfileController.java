@@ -19,7 +19,6 @@ import com.aeon.tot.profile.api.service.ProfileService;
 
 import jakarta.validation.Valid;
 
-
 @RestController
 @RequestMapping("/api/v1/profiles")
 public class ProfileController {
