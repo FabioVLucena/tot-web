@@ -1,6 +1,6 @@
 package com.aeon.tot.auth.api.controller;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -18,11 +18,11 @@ public class ApplicationControllerAdvice {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorResponse treatmentMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-		List<String> errorStrList = ex.getBindingResult()
+		Set<String> errorStrList = ex.getBindingResult()
 				.getAllErrors()
 				.stream()
 				.map(errorStr -> errorStr.getDefaultMessage())
-				.collect(Collectors.toList());
+				.collect(Collectors.toSet());
 		
 		return ErrorResponse.convertList(errorStrList);
 	}
