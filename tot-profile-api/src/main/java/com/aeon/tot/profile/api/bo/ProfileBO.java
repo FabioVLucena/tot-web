@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
-import com.aeon.tot.profile.api.dto.CreateSimpleProfileRequest;
+import com.aeon.tot.profile.api.dto.BasicRegistrationRequest;
 import com.aeon.tot.profile.api.dto.UpdateProfileRequest;
 import com.aeon.tot.profile.api.entity.Profile;
 import com.aeon.tot.profile.api.exception.WarningException;
@@ -22,7 +22,7 @@ public class ProfileBO {
 		this.profileRepository = profileRepository;
 	}
 	
-	public Profile createSimple(CreateSimpleProfileRequest req) throws WarningException {
+	public Profile basicRegistration(BasicRegistrationRequest req) throws WarningException {
 		Long userId = req.userId();
 		
 		validateUserIdInUse(userId);
