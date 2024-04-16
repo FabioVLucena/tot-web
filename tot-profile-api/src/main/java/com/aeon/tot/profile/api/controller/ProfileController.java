@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aeon.tot.profile.api.bo.ProfileBO;
-import com.aeon.tot.profile.api.dto.CreateSimpleProfileRequest;
-import com.aeon.tot.profile.api.dto.CreateSimpleProfileResponse;
+import com.aeon.tot.profile.api.dto.BasicRegistrationRequest;
+import com.aeon.tot.profile.api.dto.BasicRegistrationResponse;
 import com.aeon.tot.profile.api.dto.GetProfileByIdResponse;
 import com.aeon.tot.profile.api.dto.UpdateProfileRequest;
 import com.aeon.tot.profile.api.entity.Profile;
@@ -50,10 +50,10 @@ public class ProfileController {
 	}
 	
 	@PostMapping
-	public CreateSimpleProfileResponse createSimpleProfile(@RequestBody @Valid CreateSimpleProfileRequest req) throws WarningException {
-		Profile profile = profileBO.createSimple(req);
+	public BasicRegistrationResponse basicRegistration(@RequestBody @Valid BasicRegistrationRequest req) throws WarningException {
+		Profile profile = profileBO.basicRegistration(req);
 		
-		return CreateSimpleProfileResponse.convert(profile);
+		return BasicRegistrationResponse.convert(profile);
 	}
 
 	@PutMapping("/{profileId}")
