@@ -2,15 +2,12 @@ package com.aeon.tot.profile.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aeon.tot.profile.api.bo.ProfileBO;
-import com.aeon.tot.profile.api.dto.BasicRegistrationRequest;
-import com.aeon.tot.profile.api.dto.BasicRegistrationResponse;
 import com.aeon.tot.profile.api.dto.GetProfileByIdResponse;
 import com.aeon.tot.profile.api.dto.UpdateProfileRequest;
 import com.aeon.tot.profile.api.entity.Profile;
@@ -49,13 +46,6 @@ public class ProfileController {
 		return GetProfileByIdResponse.convert(profile);
 	}
 	
-	@PostMapping
-	public BasicRegistrationResponse basicRegistration(@RequestBody @Valid BasicRegistrationRequest req) throws WarningException {
-		Profile profile = profileBO.basicRegistration(req);
-		
-		return BasicRegistrationResponse.convert(profile);
-	}
-
 	@PutMapping("/{profileId}")
 	public GetProfileByIdResponse updateProfile(@PathVariable Long profileId, @RequestBody @Valid UpdateProfileRequest req) throws WarningException {
 		Profile profile = profileBO.update(profileId, req);

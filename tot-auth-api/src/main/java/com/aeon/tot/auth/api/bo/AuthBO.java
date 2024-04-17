@@ -3,12 +3,14 @@ package com.aeon.tot.auth.api.bo;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.aeon.tot.auth.api.dto.BasicRegistrationRequest;
 import com.aeon.tot.auth.api.dto.SigninRequest;
 import com.aeon.tot.auth.api.dto.SigninResponse;
 import com.aeon.tot.auth.api.dto.SignupRequest;
 import com.aeon.tot.auth.api.dto.SignupResponse;
 import com.aeon.tot.auth.api.entity.User;
 import com.aeon.tot.auth.api.exception.WarningException;
+import com.aeon.tot.auth.api.facade.ProfileFacade;
 import com.aeon.tot.auth.api.service.JwtService;
 import com.aeon.tot.auth.api.service.UserService;
 
@@ -19,14 +21,17 @@ public class AuthBO {
 	private JwtService jwtService;
 	private UserService userService;
     private PasswordEncoder passwordEncoder;
+    private ProfileFacade profileFacade;
 	
 	public AuthBO(UserBO userBO, JwtService jwtService, 
-			UserService userService, PasswordEncoder passwordEncoder) {
+			UserService userService, PasswordEncoder passwordEncoder,
+			ProfileFacade profileFacade) {
 	
 		this.userBO = userBO;
 		this.jwtService = jwtService;
 		this.userService = userService;
 		this.passwordEncoder = passwordEncoder;
+		this.profileFacade = profileFacade;
 	}
 	
 	public SigninResponse signin(SigninRequest req) throws WarningException {
@@ -61,6 +66,8 @@ public class AuthBO {
 		String hashPassword = this.passwordEncoder.encode(password);
 		
 		User user = userBO.create(username, hashPassword);
+		
+		profileFacade.basicRegistration(new BasicRegistrationRequest(user.getId()));
 		
 		String jwt = this.jwtService.generateToken(user);
 		

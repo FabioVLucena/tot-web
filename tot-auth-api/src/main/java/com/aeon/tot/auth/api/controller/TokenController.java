@@ -12,6 +12,6 @@ public class TokenController {
 	
 	@GetMapping("/validate")
 	public ResponseEntity<String> validate() throws Exception {
-		return ResponseEntity.status(HttpStatus.OK).body("Logado ainda");
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }
