@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,7 +29,11 @@ public class Profile {
 	private LocalDate birthDate;
 	
 	private String biography;
-
+	
+	@OneToOne
+	@JoinColumn(name = "photo_id", referencedColumnName = "uuid")
+	private File photo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -74,5 +80,13 @@ public class Profile {
 
 	public void setBiography(String biography) {
 		this.biography = biography;
+	}
+
+	public File getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(File photo) {
+		this.photo = photo;
 	}
 }
