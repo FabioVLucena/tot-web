@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.aeon.tot.profile.api.bo.ProfileBO;
 import com.aeon.tot.profile.api.dto.BasicRegistrationRequest;
-import com.aeon.tot.profile.api.exception.WarningException;
 
 @Component
 public class ProfileConsumer {
@@ -31,10 +30,11 @@ public class ProfileConsumer {
 			exchange = @Exchange(EXCHANGE_NAME),
 			key = ROUTING_KEY
 			))
-	public void processMessage(final Message message, final BasicRegistrationRequest req) throws WarningException {
-		log.info("Routing key {}", message.getMessageProperties().getReceivedRoutingKey());
-		log.info("Request body {}", req);
-		
-		profileBO.basicRegistration(req);
+	public void processMessage(final Message message, final BasicRegistrationRequest req) {
+		try {
+			profileBO.basicRegistration(req);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
 	}
 }
