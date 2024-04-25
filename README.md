@@ -8,7 +8,7 @@ O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo
 
 * Autenticação: Sistema de login e registro completo.
 * Gerenciamento de perfil: Crie e personalize seu perfil, incluindo foto de perfil, biografia e links para outras redes sociais.
-* Postagens: Compartilhe seus pensamentos, fotos e vídeos com seus amigos.
+* Postagens: Compartilhe seus pensamentos.
 * Pesquisa: Encontre facilmente pessoas e conteúdo que você procura.
 
 ## Tecnologias utilizadas:
