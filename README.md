@@ -11,7 +11,7 @@ O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo
 * Postagens: Compartilhe seus pensamentos, fotos e vídeos com seus amigos.
 * Pesquisa: Encontre facilmente pessoas e conteúdo que você procura.
 
-## Tecnologias utilizadas
+## Tecnologias utilizadas:
 [![My Skills](https://skillicons.dev/icons?i=java,spring,react,rabbitmq,postgres)](https://skillicons.dev)
 
 ## Como executar o projeto:
@@ -34,7 +34,7 @@ cd /tot-web
 docker-compose up
 ```
 
-## Autor
+## Autor:
 
 [Fabio Vital Lucena da Silva](https://www.linkedin.com/in/fabio-vital-lucena/)
 
