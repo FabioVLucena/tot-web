@@ -15,13 +15,17 @@ public class GatewayConfig {
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder) {
 		return builder.routes()
+				.route("tot-auth-api", r -> r.path("/tot-auth-api/**")
+						.filters(f -> f.stripPrefix(1))
+						.uri("lb://tot-auth-api"))
 				.route("tot-profile-api", r -> r.path("/tot-profile-api/**")
 						.filters(f -> f.stripPrefix(1)
 								.filter(filter))
 						.uri("lb://tot-profile-api"))
-				.route("tot-auth-api", r -> r.path("/tot-auth-api/**")
-						.filters(f -> f.stripPrefix(1))
-						.uri("lb://tot-auth-api"))
+				.route("tot-post-api", r -> r.path("/tot-post-api/**")
+						.filters(f -> f.stripPrefix(1)
+								.filter(filter))
+						.uri("lb://tot-post-api"))
 				.build();
 	}
 }
