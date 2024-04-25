@@ -21,6 +21,8 @@ import com.aeon.tot.post.api.entity.Post;
 import com.aeon.tot.post.api.exception.WarningException;
 import com.aeon.tot.post.api.service.PostService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/posts")
 public class PostController {
@@ -57,7 +59,7 @@ public class PostController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PostResponse> createPost(@RequestBody PostRequest req) throws WarningException {
+	public ResponseEntity<PostResponse> createPost(@RequestBody @Valid PostRequest req) throws WarningException {
 		Post post = this.postService.createPost(req);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -71,7 +73,9 @@ public class PostController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<PostResponse> updatePost(@PathVariable Long id, @RequestBody PostRequest req) throws WarningException {
+	public ResponseEntity<PostResponse> updatePost(@PathVariable Long id,
+			@RequestBody @Valid PostRequest req) throws WarningException {
+		
 		Post post = this.postService.updatePost(id, req);
 		
 		PostResponse res = PostResponse.convert(post); 
