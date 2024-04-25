@@ -32,8 +32,13 @@ public class PostController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<PostResponse>> selectAll(@RequestParam String title, @RequestParam String content, @RequestParam Long profileId) {
-		List<Post> postList = this.postService.selectAll();
+	public ResponseEntity<List<PostResponse>> selectAll(@RequestParam(required = false) String title,
+			@RequestParam(required = false) String content,
+			@RequestParam(required = false) Long profileId) {
+		
+		List<Post> postList = this.postService.selectAll(title,
+				content,
+				profileId);
 		
 		List<PostResponse> res = postList.stream()
 				.map(PostResponse::convert)
@@ -43,7 +48,7 @@ public class PostController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<PostResponse> getPostById(@PathVariable Long id) {
+	public ResponseEntity<PostResponse> getPostById(@PathVariable Long id) throws WarningException {
 		Post post = this.postService.getPostById(id);
 		
 		PostResponse res = PostResponse.convert(post); 
@@ -75,8 +80,8 @@ public class PostController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
-		this.postService.deletePost(id);
+	public ResponseEntity<Void> deletePost(@PathVariable Long id) throws WarningException {
+		this.postService.deletePostById(id);
 		
 		return ResponseEntity.noContent().build();
 	}
