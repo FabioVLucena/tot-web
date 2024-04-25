@@ -1,43 +1,41 @@
-## Tot-web: Um repositório para todas as suas necessidades de rede social
+# To The Web (ToT)
 
-**Descrição:**
+## Descrição:
 
-O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo de uma rede social. Seja você um desenvolvedor experiente ou apenas começando, o Tot-web oferece uma maneira fácil de criar e gerenciar sua própria rede social.
+O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo de uma rede social.
 
-**Características:**
+## Características:
 
 * Autenticação: Sistema de login e registro completo.
 * Gerenciamento de perfil: Crie e personalize seu perfil, incluindo foto de perfil, biografia e links para outras redes sociais.
 * Postagens: Compartilhe seus pensamentos, fotos e vídeos com seus amigos.
-* Curtidas e comentários: Interaja com o conteúdo de outras pessoas curtindo e comentando.
 * Pesquisa: Encontre facilmente pessoas e conteúdo que você procura.
-* E muito mais!
 
-**Começando:**
+## Tecnologias utilizadas
+[![My Skills](https://skillicons.dev/icons?i=java,spring,react,rabbitmq,postgres)](https://skillicons.dev)
 
-1. Instale o Git: [https://git-scm.com/](https://git-scm.com/)
-2. Clone o repositório Tot-web:
+## Como executar o projeto:
+
+1. Clone o repositório Tot-web:
 
 ```
 git clone https://github.com/FabioVLucena/tot-web
 ```
 
-3. Navegue até a pasta do aplicativo que você deseja executar:
+2. Navegue para a pasta do aplicativo:
 
 ```
-cd tot-web/apps/nome-do-aplicativo
+cd /tot-web
 ```
 
-4. Instale as dependências:
+3. Execute a aplicação:
 
 ```
-mvn install
+docker-compose up
 ```
 
-**Contribuindo:**
+## Autor
 
-O Tot-web é um projeto de código aberto e estamos sempre procurando por novos colaboradores. Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir um problema no GitHub.
+[Fabio Vital Lucena da Silva](https://www.linkedin.com/in/fabio-vital-lucena/)
 
-**Agradecimentos:**
-
-Obrigado por usar o Tot-web!
+[Matheus Campos Friedrich](https://www.linkedin.com/in/friedrichmatheus/)
