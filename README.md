@@ -9,10 +9,10 @@ O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo
 * Autenticação: Sistema de login e registro completo.
 * Gerenciamento de perfil: Crie e personalize seu perfil, incluindo foto de perfil, biografia e links para outras redes sociais.
 * Postagens: Compartilhe seus pensamentos.
-* Pesquisa: Encontre facilmente pessoas e conteúdo que você procura.
+* Pesquisa: Encontre facilmente o conteúdo que você procura.
 
 ## Tecnologias utilizadas:
-[![My Skills](https://skillicons.dev/icons?i=java,spring,react,rabbitmq,postgres)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=java,spring,react,rabbitmq,postgres,docker)](https://skillicons.dev)
 
 ## Como executar o projeto:
 
