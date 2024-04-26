@@ -1,11 +1,9 @@
-version: "3"
-
 services:
   rabbitmq:
     image: rabbitmq:management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    expose:
+      - 5672
+      - 15672
 
   postgres:
     image: postgres
@@ -13,3 +11,56 @@ services:
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
+
+  eureka:
+    build:
+      context: ./tot-eureka-server
+      dockerfile: Dockerfile
+    expose:
+      - 8761
+
+  auth-api:
+    build:
+      context: ./tot-auth-api
+      dockerfile: Dockerfile
+    expose:
+      - 8082
+    depends_on:
+      - rabbitmq
+      - postgres
+      - eureka
+
+  profile-api:
+    build:
+      context: ./tot-profile-api
+      dockerfile: Dockerfile
+    expose:
+      - 8081
+    depends_on:
+      - rabbitmq
+      - postgres
+      - eureka
+
+  post-api:
+    build:
+      context: ./tot-post-api
+      dockerfile: Dockerfile
+    expose:
+      - 8777
+    depends_on:
+      - rabbitmq
+      - postgres
+      - eureka
+      - profile-api
+
+  gateway:
+    build:
+      context: ./tot-cloud-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-api
+      - profile-api
+      - post-api
+      - eureka
