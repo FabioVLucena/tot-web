@@ -16,6 +16,8 @@ services:
     build:
       context: ./tot-eureka-server
       dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     expose:
       - 8761
 
@@ -23,6 +25,8 @@ services:
     build:
       context: ./tot-auth-api
       dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     expose:
       - 8082
     depends_on:
@@ -34,6 +38,8 @@ services:
     build:
       context: ./tot-profile-api
       dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     expose:
       - 8081
     depends_on:
@@ -45,6 +51,8 @@ services:
     build:
       context: ./tot-post-api
       dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     expose:
       - 8777
     depends_on:
@@ -57,6 +65,8 @@ services:
     build:
       context: ./tot-cloud-gateway
       dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     ports:
       - "8080:8080"
     depends_on:
