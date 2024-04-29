@@ -12,14 +12,14 @@ O Tot-web é um monorepo no GitHub que fornece várias aplicações para o fluxo
 * Pesquisa: Encontre facilmente o conteúdo que você procura.
 
 ## Tecnologias utilizadas:
-[![My Skills](https://skillicons.dev/icons?i=java,spring,react,rabbitmq,postgres,docker)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=java,spring,react,hibernate,rabbitmq,postgres,docker)](https://skillicons.dev)
 
 ## Como executar o projeto:
 
 1. Clone o repositório Tot-web:
 
 ```
-git clone https://github.com/FabioVLucena/tot-web
+git clone https://github.com/FabioVLucena/tot-web.git
 ```
 
 2. Navegue para a pasta do aplicativo:
